@@ -47,7 +47,7 @@ public class StudentList
 		else if(args[0].equals("ShowRandom")) 
 		{	
  			String contents = LoadData();
-			System.out.println(contents);				                  
+			System.out.println(contents);				                
 					System.out.println(words[y]);
 					System.out.println(EndDialog);
 			} 			
@@ -56,12 +56,19 @@ public class StudentList
            WirteData(args);
 		}
 		else if(args[0].contains("query")) 
-		{
+		{   
 			String contents = LoadData();
 			String words[] = contents.split(",");
+			String t = args[0].substring(1);
+			for(int idx = 0; idx<words.length; idx++) 
 			{
-              System.out.println("EndDialog");
-             }			
+				if(words[idx].equals(t)) 
+				{
+					System.out.println("Success");
+						break;
+				}
+			} 
+              System.out.println("EndDialog");			
 		}
 		else if(args[0].contains("count")) 
 		{
