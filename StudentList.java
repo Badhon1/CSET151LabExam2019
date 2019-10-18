@@ -25,20 +25,16 @@ public class StudentList
 		try {
 			BufferedWriter s = new BufferedWriter(
 					new FileWriter("DataFile", true));
-			s.close();
-		} catch (Exception e){}
-
-		System.out.println("EndDialog.");
-	}
-
-	public static void main(String[] args) 
-	{
-        if(args.length == 0){
-		    System.out.println(Usage);
+			String t = args[0].substring(1); 
+            Date d = new Date();
+            String df = DateFormat;
+            DateFormat dateFormat = new SimpleDateFormat(df);
+            String fd= dateFormat.format(d);
+            s.write(", "+t+"\nList last updated on "+fd);
 		    return;
 	}
 //		Check arguments
-		if(args[0].equals("a")) 
+		if(args[0].equals("ShowAll")) 
 		{
             String contents = LoadData();
             String words[] = contents.split(",");			
@@ -48,31 +44,26 @@ public class StudentList
 				} 
 			System.out.println("EndDialog");
 		}
-		else if(args[0].equals("r")) 
+		else if(args[0].equals("ShowRandom")) 
 		{	
-			Random x = new Random();
-				int y = x.nextInt();
+ 			String contents = LoadData();
+			System.out.println(contents);				                  
 					System.out.println(words[y]);
 					System.out.println(EndDialog);
 			} 			
-		else if(args[0].contains("+"))
+		else if(args[0].contains("addword"))
 		{
            WirteData(args);
 		}
-		else if(args[0].contains("?")) 
+		else if(args[0].contains("query")) 
 		{
-			String t = args[0].substring(1);
-			for(int idx = 0; idx<words.length && !done; idx++) 
+			String contents = LoadData();
+			String words[] = contents.split(",");
 			{
-				if(words[idx].equals(t)) 
-				{
-					System.out.println("Success");
-						done=true;
-				}
-			} 
-              System.out.println("EndDialog");			
+              System.out.println("EndDialog");
+             }			
 		}
-		else if(args[0].contains("c")) 
+		else if(args[0].contains("count")) 
 		{
             String contents = LoadData();
 			char a[] = contents.toCharArray();			
