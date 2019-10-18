@@ -30,7 +30,7 @@ public class StudentList
             String df = DateFormat;
             DateFormat dateFormat = new SimpleDateFormat(df);
             String fd= dateFormat.format(d);
-            s.write(", "+t+"\nList last updated on "+fd);
+            s.write(", "+t);
 		    return;
 	}
 //		Check arguments
@@ -75,7 +75,7 @@ public class StudentList
             String contents = LoadData();
             String words[] = contents.split(",");
 			char a[] = contents.toCharArray();			
-            System.out.println(words.length +" word(s) found Character" + a.length);
+            System.out.println(words.length +" WordCountMsg " + a.length);
             System.out.println("EndDialog");
 		}else {
 			System.out.println(InvalidMsg);
