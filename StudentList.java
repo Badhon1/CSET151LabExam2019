@@ -76,7 +76,10 @@ public class StudentList
             String words[] = contents.split(",");
 			char a[] = contents.toCharArray();			
             System.out.println(words.length +" word(s) found Character" + a.length);
-            System.out.println("EndDialog");			
+            System.out.println("EndDialog");
+		}else {
+			System.out.println(InvalidMsg);
+			return;            			
 		}
 
 	}	
